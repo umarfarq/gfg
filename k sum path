@@ -1,0 +1,27 @@
+Given a binary tree and an integer K. Find the number of paths in the tree which have their sum equal to K.
+A path may start from any node and end at any node in the downward direction.
+Since the answer may be very large, compute it modulo 109+7
+
+class Solution{
+    int ans,k,sum;
+    map<int,int> mp;
+    void rec(Node *root){
+        if(!root)
+            return;
+        sum+=root->data;
+        ans+=mp[sum-k];
+        mp[sum]++;
+        rec(root->left);
+        rec(root->right);
+        if(--mp[sum]==0) mp.erase(sum);
+        sum-=root->data;
+    }
+  public:
+    int sumK(Node *root,int K){
+        // code here 
+        ans = 0,k=K,sum=0;
+        mp[0]=1;
+        rec(root);
+        return ans;
+    }
+};
