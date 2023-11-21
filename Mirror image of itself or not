@@ -1,0 +1,43 @@
+Given a Binary Tree. Check whether it is Symmetric or not, i.e. whether the binary tree is a Mirror image of itself or not.
+
+Input:
+         5
+       /   \
+      1     1
+     /       \
+    2         2
+Output: 
+True
+Explanation: 
+Tree is mirror image of itself i.e. tree is symmetric
+
+class Solution {
+public:
+    // Returns true/false denoting whether the tree is symmetric or not
+    bool isSymmetricHelper(Node *leftSubtree, Node *rightSubtree) {
+        // Base case: both subtrees are empty, so they are symmetric
+        if (!leftSubtree && !rightSubtree) {
+            return true;
+        }
+
+        // If one subtree is empty and the other is not, they are not symmetric
+        if ((!leftSubtree && rightSubtree) || (leftSubtree && !rightSubtree)) {
+            return false;
+        }
+
+        // Check if the values at the current nodes are equal
+        bool valuesEqual = leftSubtree->data == rightSubtree->data;
+
+        // Recursively check the symmetry of the left and right subtrees
+        bool leftSymmetric = isSymmetricHelper(leftSubtree->left, rightSubtree->right);
+        bool rightSymmetric = isSymmetricHelper(leftSubtree->right, rightSubtree->left);
+
+        // The tree is symmetric if values are equal, and both subtrees are symmetric
+        return valuesEqual && leftSymmetric && rightSymmetric;
+    }
+
+    bool isSymmetric(Node* root) {
+        // Check if the tree is symmetric using the helper function
+        return isSymmetricHelper(root, root);
+    }
+};
