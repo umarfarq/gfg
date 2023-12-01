@@ -1,0 +1,37 @@
+Given a Binary Search Tree that contains unique positive integer values greater than 0. The task is to complete the function isDeadEnd which returns true if the BST contains a dead end else returns false. Here Dead End means a leaf node, at which no other node can be inserted.
+
+Example :-
+
+Input :   
+               8
+             /   \ 
+           5      9
+         /  \     
+        2    7 
+       /
+      1     
+          
+Output : 
+Yes
+Explanation : 
+Node 1 is a Dead End in the given BST.
+
+Solution :-
+
+class Solution{
+  public:
+   
+  bool rec(Node* root,int mini,int maxi)
+  {
+      if(!root)
+      return false;
+      if(maxi-mini==0)
+      return true;
+      return rec(root->left,mini,root->data-1) || rec(root->right,root->data+1,maxi);
+  }
+    bool isDeadEnd(Node *root)
+    {
+        //Your code here
+        return rec(root,1,INT_MAX);
+    }
+};
