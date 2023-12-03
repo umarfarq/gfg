@@ -1,0 +1,12 @@
+Given a string of digits, the task is to check if it is a ‘sum-string’. A string S is called a sum-string when it is broken down into more than one substring and the rightmost substring can be written as a sum of two substrings before it and the same is recursively true for substrings before it.
+
+Example 1:
+Input:
+S = "12243660"
+Output:
+1
+Explanation:
+"12243660" can be broken down as {"12", "24", "36", "60"}.
+We can get 60 from 24 and 36 as 24 + 36 = 60. Similarly 36 can be written as 12 + 24.
+
+Solution:-
