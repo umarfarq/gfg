@@ -10,4 +10,30 @@ Output:
 Explanation: 
 The sum of the array is 32 ,we can add 5 to this to make it 37 which is a prime number.
 
-Solution :-
+Solution in C++:-
+
+class Solution
+{
+    public:
+    bool isPrime(int n)
+    {
+        if(n<=1) return false;
+        for(int i=2;i<=sqrt(n);i++)
+        {
+            if(n%i==0) return false;
+        }
+        return true;
+    }
+    int minNumber(int arr[],int N)
+    {
+        int count=0;
+        int sum=accumulate(arr,arr+N, 0);
+        if(isPrime(sum)) return count;
+        while(!isPrime(sum))
+        {
+            count++;
+            sum++;
+        }
+        return count;
+    }
+};
