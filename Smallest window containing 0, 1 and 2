@@ -1,0 +1,68 @@
+Question :-
+Given a string S consisting of the characters 0, 1 and 2. Your task is to find the length of the smallest substring of string S that contains all the three characters 0, 1 and 2. If no such substring exists, then return -1.
+
+Example 1:
+
+Input:
+S = 10212
+Output:
+3
+Explanation:
+The substring 102 is the smallest substring
+that contains the characters 0, 1 and 2.
+
+Solution in c++ :-
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int smallestSubstring(string S) {
+          int in0=-1,in1=-1,in2=-1;
+      int res=INT_MAX;
+      for(int i=0;i<S.size();i++){
+          if(S[i]=='0'){
+              in0=i;
+          }
+           if(S[i]=='1'){
+              in1=i;
+          }
+           if(S[i]=='2'){
+              in2=i;
+          }
+          
+          if(in0 !=-1 && in1 != -1 && in2 !=-1){
+              
+              int len=max(in0,max(in1,in2))-min(in0,min(in1,in2))+1;
+              
+              res=min(res,len);
+          }
+          
+      }
+      if(res==INT_MAX){
+               return -1;
+      }
+ 
+return res;
+    }
+};
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string S;
+        cin >> S;
+        Solution ob;
+        cout << ob.smallestSubstring(S);
+        cout << endl;
+    }
+}
+
+
+Output :-
+For Input: 
+1210
+Your Output: 
+3
+Expected Output: 
+3
