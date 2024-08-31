@@ -1,4 +1,4 @@
-<h2>Sorted subsequence of size 3 </h2>
+Sorted subsequence of size 3 
 
 You are given an array arr, you need to find any three elements in it such that arr[i] < arr[j] < arr[k] and i < j < k.
 
