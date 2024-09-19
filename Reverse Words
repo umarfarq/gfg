@@ -1,0 +1,66 @@
+Reverse Words
+Difficulty: EasyAccuracy: 56.08%Submissions: 337K+Points: 2
+Given a String str, reverse the string without reversing its individual words. Words are separated by dots.
+
+Note: The last character has not been '.'. 
+
+Examples :
+
+Input: str = i.like.this.program.very.much
+Output: much.very.program.this.like.i
+Explanation: After reversing the whole string(not individual words), the input string becomes much.very.program.this.like.i
+
+Input: str = pqr.mno
+Output: mno.pqr
+Explanation: After reversing the whole string , the input string becomes mno.pqr
+
+Expected Time Complexity: O(|str|)
+Expected Auxiliary Space: O(|str|)
+
+Constraints:
+1 <= |str| <= 105
+
+Solution :
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t > 0) {
+            String s = sc.next();
+            Solution obj = new Solution();
+            System.out.println(obj.reverseWords(s));
+            t--;
+        }
+    }
+}
+
+class Solution {
+    // Function to reverse words in a given string.
+    String reverseWords(String s) {
+        
+        String res = new String("");
+        
+        String [] str=  s.split("\\.");
+        
+        boolean flag = false;
+        
+        for(int i = str.length-1; i>=0; i--)
+        {
+            if(flag)
+            {
+                res+=".";
+            }
+            res+=str[i];
+            flag = true;
+        }
+        
+        return res;
+        
+    }
+}
